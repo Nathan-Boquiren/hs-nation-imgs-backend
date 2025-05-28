@@ -1,12 +1,21 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
-require("dotenv").config();
 const generateImageMetadata = require("./generateImagesJson");
 
 const app = express();
 app.use(cors());
+
+app.use((req, res, next) => {
+  res.set(
+    "Cache-Control",
+    "no-store, no-cache, must-revalidate, proxy-revalidate"
+  );
+  next();
+});
+
 const PORT = process.env.PORT || 3000;
 const JSON_PATH = path.join(__dirname, "images.json");
 
@@ -16,7 +25,8 @@ app.get("/images", (req, res) => {
     const withUrls = data.map((item) => ({
       id: item.id,
       name: item.name,
-      imageUrl: `https://drive.google.com/thumbnail?id=${item.fileId}`,
+      fileId: item.fileId,
+      imageUrl: `https://drive.google.com/uc?export=view&id=${item.fileId}`,
     }));
     res.json(withUrls);
   } catch (err) {
