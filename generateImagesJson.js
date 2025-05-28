@@ -48,6 +48,8 @@ async function generateImageMetadata() {
     })
     .filter(Boolean);
 
+  metadata.sort((a, b) => a.id - b.id);
+
   // 5. Write images.json
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify(metadata, null, 2), "utf8");
   console.log(`✅ Wrote ${metadata.length} entries to ${OUTPUT_FILE}`);
