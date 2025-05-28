@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
+require("dotenv").config();
 const generateImageMetadata = require("./generateImagesJson");
 
 const app = express();
@@ -36,5 +37,5 @@ app.get("/refresh", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 API listening on port ${PORT}`);
+  console.log(`API listening on port ${PORT}`);
 });

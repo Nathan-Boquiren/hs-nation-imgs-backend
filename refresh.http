@@ -1,0 +1,2 @@
+GET http://localhost:3000/refresh
+Accept: application/json

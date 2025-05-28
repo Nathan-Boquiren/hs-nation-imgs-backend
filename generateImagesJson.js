@@ -1,6 +1,7 @@
 // generateImagesJson.js
 const fs = require("fs");
 const { google } = require("googleapis");
+require("dotenv").config();
 
 const FOLDER_ID =
   process.env.DRIVE_FOLDER_ID || "1ZPREpiTanEQz6ZRcmT9NCWhhw6eo2Huv";
