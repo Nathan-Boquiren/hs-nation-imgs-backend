@@ -16,7 +16,7 @@ app.get("/images", (req, res) => {
     const withUrls = data.map((item) => ({
       id: item.id,
       name: item.name,
-      imageUrl: `https://drive.google.com/uc?id=${item.fileId}`,
+      imageUrl: `https://drive.google.com/uc?export=view&id=${item.fileId}`,
     }));
     res.json(withUrls);
   } catch (err) {
