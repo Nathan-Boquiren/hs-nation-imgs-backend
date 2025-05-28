@@ -13,7 +13,6 @@ const JSON_PATH = path.join(__dirname, "images.json");
 app.get("/images", (req, res) => {
   try {
     const data = JSON.parse(fs.readFileSync(JSON_PATH, "utf8"));
-    // add a direct-drive URL for each image
     const withUrls = data.map((item) => ({
       id: item.id,
       name: item.name,
